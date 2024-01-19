@@ -1,0 +1,26 @@
+{
+  "slug": "find-the-largest-two-elements-in-an-array",
+  "title": "Find The Largest Two Elements In An Array",
+  "c-sharp": "using System;\n\nclass Program\n{\n    static void FindLargestTwoElements(int[] arr)\n    {\n        int firstLargest = int.MinValue;\n        int secondLargest = int.MinValue;\n\n        foreach (int num in arr)\n        {\n            if (num > firstLargest)\n            {\n                secondLargest = firstLargest;\n                firstLargest = num;\n            }\n            else if (num > secondLargest && num != firstLargest)\n            {\n                secondLargest = num;\n            }\n        }\n\n        if (secondLargest == int.MinValue)\n        {\n            Console.WriteLine(\"Array has less than two distinct elements.\");\n        }\n        else\n        {\n            Console.WriteLine($\"The largest two elements are {firstLargest} and {secondLargest}\");\n        }\n    }\n\n    static void Main()\n    {\n        int[] arr1 = { 12, 13, 1, 10, 34, 1 };\n        FindLargestTwoElements(arr1);\n\n        int[] arr2 = { 10, 5, 10 };\n        FindLargestTwoElements(arr2);\n\n        int[] arr3 = { 10, 10, 10 };\n        FindLargestTwoElements(arr3);\n    }\n}\n",
+  "javascript": "function findLargestTwoElements(arr) {\n    if (arr.length < 2) {\n      console.log(\"Array should have at least two elements.\");\n      return;\n    }\n  \n    // Sort the array in descending order\n    arr.sort(function(a, b) {\n      return b - a;\n    });\n  \n    // Extract the first and second elements (largest and second largest)\n    let largest = arr[0];\n    let secondLargest = arr[1];\n  \n    return [largest, secondLargest];\n  }\n\n    // Example usage\n    let numbers = [10, 5, 8, 20, 15];\n    let result = findLargestTwoElements(numbers);\n\n    let letters = ['f', 'o', 'p', 'w', 'z'];\n    let result = findLargestTwoElements(letters);\n    \n    console.log(\"Largest two numbers:\", result);",
+  "kotlin": "fun main() {\n    val twoLargestElements = twoLargestElements(arrayOf(12, 13, 1, 10, 34, 1))\n    println(twoLargestElements.joinToString())\n}\n\nfun twoLargestElements(array: Array<Int>): Array<Int> {\n    return if (array.size < 2) {\n        emptyArray()\n    } else {\n        val sortedArray = array.sortedArrayDescending()\n        sortedArray.sliceArray(0..1)\n    }\n}\n",
+  "typescript": "function findTheLargestTwoElementsInAnArray (arr: number[]) { \n  if (arr.length < 2) {\n    throw new Error('The length of the array must be at least 2.');\n  }\n\n  const max1 = Math.max(...arr);\n  const filteredNumbers = arr.filter(num => num !== max1);\n  const max2 = Math.max(...filteredNumbers);\n  \n  return { max1, max2 };\n};\n\nconst list = [12, 13, 1, 10, 34, 1];\nconst { max1, max2 } = findTheLargestTwoElementsInAnArray(list);\n\nconsole.log(`The largest two elements are ${max1} and ${max2}`)",
+  "description": "\n## Write a program to find the largest two elements in an array\n\n```text\r\nInput: arr[] = {12, 13, 1, 10, 34, 1}\r\nOutput: The largest two elements are 34 and 13\r\n\r\nInput: arr[] = {10, 5, 10}\r\nOutput: The largest two elements are 10 and 5\r\n\r\nInput: arr[] = {10, 10, 10}\r\nOutput: The largest two elements are 10 and 10\r\n```\n\n---\n",
+  "trackId": 5033,
+  "lastUpdated": "2024-01-16T08:20:47Z",
+  "contributors": [
+    "joenjogu",
+    "harshraj8843",
+    "Amedi-Imbira",
+    "kkiriky",
+    "hamzambo"
+  ],
+  "python": "def main():\n      \"\"\"\n            Return the two largest elements from a nonempty Python list (array)\n            1. Sort the array\n            2. Return the last two elements from the sorted array\n            \n            Asymptotic analysis\n            By sorting the sequence of the elements, elements will be placed next to each other. Therefore\n            1. built in function sorted guarantees a worst case running time of O(n log n)\n            2. return tuple assignment is in constant time O(1)\n            \n      \"\"\"\n      seq = [12, 13, 1, 10, 34, 35]                                                # Test with various sequences\n      \n      largest, second_largest = find_two_largest_elements(seq)                      #unpacking tuple\n      print(f'Largest: {largest} || Second largest: {second_largest}')\n\ndef find_two_largest_elements(S):\n      S_sorted = sorted(S)\n      \n      return (S_sorted[-2], S_sorted[-1])                                       # Return in tuple form\n\nif __name__ == '__main__':\n      main()",
+  "languages": [
+    "c-sharp",
+    "javascript",
+    "kotlin",
+    "typescript",
+    "python"
+  ]
+}

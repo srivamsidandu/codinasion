@@ -1,0 +1,22 @@
+{
+  "slug": "move-all-zeroes-to-end-of-array",
+  "title": "Move All Zeroes To End Of Array",
+  "java": "import java.util.Scanner;\n\npublic class MoveAllZeroesToEndOfArray {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n\n        int[] array = null;\n        while (array == null) {\n            System.out.println(\"Enter a list of numbers separated by commas: \");\n            String input = scanner.nextLine();\n            array = parseInput(input);\n\n            if (array == null) {\n                System.err.println(\"Invalid input. Please enter only integers separated by commas.\");\n            }\n        }\n\n        moveZerosToEnd(array);\n        System.out.println(\"Modified list:\");\n        printArray(array);\n\n        scanner.close();\n    }\n\n    private static int[] parseInput(String input) {\n        String[] inputNumbers = input.split(\",\");\n        int[] array = new int[inputNumbers.length];\n\n        try {\n            for (int i = 0; i < inputNumbers.length; i++) {\n                array[i] = Integer.parseInt(inputNumbers[i].trim());\n            }\n            return array;\n        } catch (NumberFormatException e) {\n            return null;\n        }\n    }\n\n    private static void moveZerosToEnd(int[] array) {\n        int insertPosition = 0;\n\n        for (int num : array) {\n            if (num != 0) {\n                array[insertPosition++] = num;\n            }\n        }\n\n        while (insertPosition < array.length) {\n            array[insertPosition++] = 0;\n        }\n    }\n\n    private static void printArray(int[] array) {\n        for (int i = 0; i < array.length; i++) {\n            System.out.print(array[i]);\n            if (i < array.length - 1) {\n                System.out.print(\", \");\n            }\n        }\n        System.out.println();\n    }\n}\n",
+  "description": "\n## Write a program to move all zeroes to end of array\n\n```txt\r\nInput  : arr[] = {1, 2, 0, 4, 3, 0, 5, 0};\r\nOutput : arr[] = {1, 2, 4, 3, 5, 0, 0, 0};\r\n\r\nInput  : arr[] = {1, 2, 0, 0, 0, 3, 6};\r\nOutput : arr[] = {1, 2, 3, 6, 0, 0, 0};\r\n```\n\n---\n",
+  "trackId": 5133,
+  "lastUpdated": "2024-01-11T04:16:20Z",
+  "contributors": [
+    "harshraj8843",
+    "Amedi-Imbira",
+    "gabinpoa",
+    "av-techspot",
+    "AlessioBugetti"
+  ],
+  "go": "package main\n\nimport \"fmt\"\n\nfunc moveZeroesToEnd(arr [16]int) [16]int {\n\tvar nonZeroes []int\n\tfor _, elem := range arr {\n\t\tif elem != 0 {\n\t\t\tnonZeroes = append(nonZeroes, elem)\n\t\t}\n\t}\n\n\treturn [16]int(append(nonZeroes, make([]int, len(arr)-len(nonZeroes))...))\n}\n\nfunc main() {\n\tvar arr = [16]int{0, 1, 0, 0, 2, 3, 4, 0, 5, 6, 0, 7, 8, 0, 9, 0}\n\tarr = moveZeroesToEnd(arr)\n\tfmt.Println(arr)\n}\n",
+  "python": "def zeroes_to_end(arr: list) -> list:\n    result = [x for x in arr if x != 0] + [x for x in arr if x == 0]\n    return result\n\nif __name__ == '__main__':\n    arr = [1, 2, 0, 4, 3, 0, 5, 0]\n    print(zeroes_to_end(arr))\n",
+  "languages": [
+    "java",
+    "go",
+    "python"
+  ]
+}
